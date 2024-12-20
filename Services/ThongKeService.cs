@@ -25,7 +25,7 @@ namespace PPDD.Services
 			using (var connection = _context.Database.GetDbConnection())
 			{
 				var parameters = new { NGAYBD = NgayBD, NGAYKT = NgayKT };
-				var result = await connection.QueryAsync(isDetail ? "THONGKECHITIET" : "THONGKE", parameters, commandType: CommandType.StoredProcedure);
+				var result = await connection.QueryAsync<ThongKe>(isDetail ? "THONGKECHITIET" : "THONGKE", parameters, commandType: CommandType.StoredProcedure);
 				return result;
 			}
 		}
